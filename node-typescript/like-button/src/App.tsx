@@ -5,9 +5,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">TypeScriptはいいぞ</header>
+      <header className="App-header">
+        <LinkButton />
+      </header>
     </div>
   );
+}
+
+function LinkButton() {
+  return <span>イイねボタン予定地</span>
 }
 
 export default App;
