@@ -13,7 +13,8 @@ function App() {
 }
 
 function LinkButton() {
-  return <span>イイねボタン予定地</span>
+  const count = 999;
+  return <span className="linkButton">♥ {count}</span>;
 }
 
 export default App;
