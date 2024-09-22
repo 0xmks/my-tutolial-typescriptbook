@@ -1,17 +1,15 @@
-import { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { GetServerSideProps, NextPage } from "next";
+import { useState } from "react";
 
-const IndexPage: NextPage = () => {
+type Props = {
+    initialImageUrl: string;
+};
+
+const IndexPage: NextPage<Props> = ({ initialImageUrl }) => {
     // useStateの初期値をImage型にする
-    const [imageUrl, setImageUrl] = useState("");
-    const [loading, setLoading] = useState(true);
-    // mount時に画像を取得
-    useEffect(() => {
-        fetchImage().then((newImage) => {
-            setImageUrl(newImage.url);
-            setLoading(false);
-      });
-    }, []);
+    const [imageUrl, setImageUrl] = useState(initialImageUrl); //初期値url
+    const [loading, setLoading] = useState(false); //初期状態をfalseにする
+
     // ボタンをクリックしたときに画像を取得
     const handleClick = async () => {
         setLoading(true); // ローディング中にする
@@ -28,6 +26,16 @@ const IndexPage: NextPage = () => {
     );
 };
 export default IndexPage;
+
+// サーバーサイドで画像を取得
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+    const image = await fetchImage();
+    return {
+        props: {
+            initialImageUrl: image.url,
+        },
+    };
+};
 
 type Image = {
     url: string;
