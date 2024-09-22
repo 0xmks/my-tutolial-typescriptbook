@@ -1,7 +1,19 @@
 import { NextPage } from "next";
- 
+import { useEffect, useState } from "react";
+
 const IndexPage: NextPage = () => {
-  return <div>猫画像予定地</div>;
+    // useStateの初期値をImage型にする
+    const [imageUrl, setImageUrl] = useState("");
+    const [loading, setLoading] = useState(true);
+    // mount時に画像を取得
+    useEffect(() => {
+        fetchImage().then((newImage) => {
+            setImageUrl(newImage.url);
+            setLoading(false);
+      });
+    }, []);
+    // ローディング中でなければ画像を表示
+    return <div>{loading || <img src={imageUrl} />}</div>;
 };
 export default IndexPage;
 
