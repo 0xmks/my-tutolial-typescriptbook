@@ -1,7 +1,7 @@
 import { useState } from "react";
  
 export const SimpleButton: () => JSX.Element = () => {
-  const [state, setState] = useState(true);
+  const [state, setState] = useState(false);
   const handleClick = () => {
     setState((prevState) => !prevState);
   };
