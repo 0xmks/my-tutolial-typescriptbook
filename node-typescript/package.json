@@ -1,5 +1,10 @@
 {
   "devDependencies": {
     "yarn": "^1.22.22"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "5",
+    "@testing-library/react": "14",
+    "@testing-library/user-event": "14"
   }
 }
