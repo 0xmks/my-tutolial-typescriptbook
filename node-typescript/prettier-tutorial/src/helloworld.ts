@@ -1,4 +1,3 @@
-const hello = ( name: string ) => {
-	conole.log("Hello,world "
-	+ name)
-}
+const hello = (name: string) => {
+  console.log("Hello,world " + name);
+};
